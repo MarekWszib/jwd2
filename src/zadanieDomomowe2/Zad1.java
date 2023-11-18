@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class Zad1 {
 
     public static void main(String[] args) {
-        int arg = Integer.parseInt(args[0]);
-        int[] ints = createArray(arg);
+        int arraySize = Integer.parseInt(args[0]);
+        int[] ints = createArray(arraySize);
         fillInArray(ints);
         printArray(ints);
         convertArray(ints);
