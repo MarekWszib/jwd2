@@ -1,5 +1,6 @@
 package zadanieDomomowe2;
 
+import java.math.BigInteger;
 import java.util.Locale;
 
 //    Zad3. Załóżmy, że
@@ -8,26 +9,28 @@ import java.util.Locale;
 //        na trzecie 4 ziarna
 //        i na każde następne pole dwa razy więcej ziaren niż na pole poprzednie.
 //        Napisz program, który zasymuluje taką sytuację i zliczy sumę wszystkich ziaren na szachownicy.
+
 public class Zad3 {
 
     public static void main(String[] args) {
-        double[] chessboard = new double[64];
+        BigInteger[] chessboard = new BigInteger[64];
         fillInChessboard(chessboard);
-        double total = addUpChessboard(chessboard);
-        System.out.printf(new Locale("US"), "There are a total of %,.0f grains on the board.", total);
+        BigInteger total = addUpChessboard(chessboard);
+        System.out.printf(new Locale("US"), "There are %,d grains on the chessboard.", total);
     }
 
-    private static double addUpChessboard(double[] chessboard) {
-        double result = 0;
-        for (double d : chessboard) {
-            result += d;
+    private static BigInteger addUpChessboard(BigInteger[] chessboard) {
+        BigInteger result = BigInteger.ZERO;
+        for (BigInteger d : chessboard) {
+            result = result.add(d);
         }
         return result;
     }
 
-    private static void fillInChessboard(double[] chessboardSquares) {
-        for (int i = 0; i < chessboardSquares.length; i++) {
-            chessboardSquares[i] = Math.pow(2, i);
+    private static void fillInChessboard(BigInteger[] chessboardSquares) {
+        chessboardSquares[0] = BigInteger.ONE;
+        for (int i = 1; i < chessboardSquares.length; i++) {
+            chessboardSquares[i] = chessboardSquares[i - 1].multiply(BigInteger.TWO);
         }
     }
 
