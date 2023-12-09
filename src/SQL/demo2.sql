@@ -3,6 +3,7 @@ select DB_NAME();
  
 -- przełącz się na bazę danych
 use AdventureWorks;
+use pedrys;
  
 -- Przykład tworzenia i usuwania bazy danych (jeżeli mamy uprawnienia)
 ----------------------------------------------------------------------
@@ -62,7 +63,8 @@ CREATE TABLE Orders (
   CustomerID int
 )
  
- 
+ select * from Orders;
+
 -- wstawianie danych do tabeli Customers
 INSERT INTO Customers (ID, Firstname, Lastname, BirthDate)
 VALUES (1, 'John', 'Smith', '19800105')
@@ -200,8 +202,8 @@ SELECT * FROM Customers
  
 -- Klucze obce (foreign keys)
 ---------------------------------------
--- DROP TABLE Customers
--- DROP TABLE Orders
+DROP TABLE Customers
+DROP TABLE Orders
  
 -- klucze obce nie są wymagane do łączenia tabel
 -- pomagają jednak egzekwować integralność referencyjną
@@ -240,7 +242,9 @@ INSERT INTO Orders (OrderDate, CustomerID)
 VALUES (GETDATE(), 2)
  
 SELECT * FROM Orders
- 
+
+SELECT * FROM Customers
+ SELECT * FROM Orders
 -- nowe zamówienie z bieżącą datą zamówienia orderDate dla nieistniejącego klienta
 -- naruszona integralność referencyjna (niespójne dane)
 -- zapytanie zakończone powodzeniem
@@ -306,6 +310,8 @@ GO
  
 INSERT INTO Orders (OrderDate, CustomerID)
 VALUES (GETDATE(), 10)
+
+-- dane sę od teraz niespojne, nie ma klienta 10
  
 ALTER TABLE Orders  WITH NOCHECK -- !
 ADD CONSTRAINT FK_Orders_Customers_ID FOREIGN KEY(CustomerID)
@@ -379,8 +385,7 @@ REFERENCES Customers ([ID])
  ON DELETE CASCADE
  ON UPDATE CASCADE
 GO
- 
- 
+  
  
 SELECT * FROM Orders
 SELECT * FROM Customers
@@ -502,6 +507,8 @@ INSERT INTO Orders (CustomerID) VALUES (1)
 INSERT INTO Orders (CustomerID) VALUES (2)
 INSERT INTO Orders (CustomerID) VALUES (3)
  
+ select*from Orders
+
 DELETE FROM Orders
  
 -- jak dodać więcej niż jedną wartość w jednym zapytaniu
@@ -516,8 +523,8 @@ SELECT * FROM Orders
 -- Klauzula sprawdzająca check
 ---------------------------------------
  
--- DROP TABLE Orders
--- DROP TABLE Customers
+DROP TABLE Orders
+DROP TABLE Customers
  
 CREATE TABLE Customers (
   ID int IDENTITY,
@@ -533,7 +540,7 @@ GO
 -- wstawienie wiersza z niepoprawną datą urodzenia (przyszła data)
 -- sukces
 INSERT INTO Customers (Firstname, Lastname, BirthDate)
-VALUES ('John', 'Smith', '20200105')
+VALUES ('John', 'Smith', '20290105')
  
 SELECT * FROM Customers
  
@@ -553,7 +560,7 @@ ADD CONSTRAINT CK_BirthDate CHECK (BirthDate < GETDATE())
 -- (powtórnie) wstawienie wiersza z niepoprawną datą urodzenia (przyszła data))
 -- niepowodzenie
 INSERT INTO Customers (Firstname, Lastname, BirthDate)
-VALUES ('John', 'Smith', '20200105')
+VALUES ('John', 'Smith', '20290105')
  
 -- sukces
 INSERT INTO Customers (Firstname, Lastname, BirthDate)
@@ -561,6 +568,8 @@ VALUES ('John', 'Smith', '19800105')
  
  
 -- jak usunąć ograniczenie z klauzulą CHECK?
+ALTER TABLE Customers DROP CONSTRAINT CK_BirthDate
+
  
 GO
  
