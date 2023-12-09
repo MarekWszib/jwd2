@@ -3,8 +3,8 @@ package lab9;
 import java.awt.*;
 
 public class FourDPoint extends Point {
-    public int z;
-    public int t;
+    int z;
+    int t;
 
     public static FourDPoint create(int x, int y, int z, int t) {
         FourDPoint fourDPoint = new FourDPoint();
@@ -16,7 +16,7 @@ public class FourDPoint extends Point {
     }
 
     public void show() {
-        System.out.println("[x=" + x + ",y=" + y + ",z=" + z + ",t=" + t + "]");
+        System.out.println("[x=" + this.x + ",y=" + this.y + ",z=" + this.z + ",t=" + this.t + "]");
     }
 
 }
