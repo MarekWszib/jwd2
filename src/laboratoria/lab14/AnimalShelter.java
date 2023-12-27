@@ -25,7 +25,7 @@ public class AnimalShelter {
         String animal33type = animals[32].getType();
         int animal33overallNumber = animals[32].getInstanceNumber();
 
-        System.out.printf("W kojcu 33 jest zwierzę klasy %s.\n", animal33type);
+        System.out.printf("W 33 kojcu jest zwierzę klasy %s.\n", animal33type);
         System.out.printf("Łączna liczba zwierząt klasy %s to %d.", animal33type, animal33overallNumber);
     }
 }
