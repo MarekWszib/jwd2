@@ -1,6 +1,6 @@
 package laboratoria.lab11;
 
-//Zaprojektuj hierarchię klas tak, aby:
+//        Zaprojektuj hierarchię klas tak, aby:
 //
 //        klasa C dziedziczyła po klasie B, a klasa B dziedziczyła po klasie A
 //        instrukcja new C(); lub new B(); lub new A(); wyświetliła kolejno informacje o wywoływaniu poszczególnych konstruktorów wszystkich klas
@@ -9,40 +9,28 @@ package laboratoria.lab11;
 
 public class Lab11 {
     public static void main(String[] args) {
+        System.out.println("\n----- wywołanie A():");
         new A();
-        System.out.println();
-
+        System.out.println("\n----- wywołanie B():");
         new B();
-        System.out.println();
-
+        System.out.println("\n----- wywołanie C():");
         new C();
-        System.out.println();
 
-        System.out.println("------- silent mode = true ---------");
-
+        System.out.println("\n----- wywołanie A(true):");
         new A(true);
-        System.out.println();
-
+        System.out.println("\n----- wywołanie B(true):");
         new B(true);
-        System.out.println();
-
+        System.out.println("\n----- wywołanie C(true):");
         new C(true);
-        System.out.println();
 
-        System.out.println("------- silent mode = false ---------");
 
+        System.out.println("\n----- wywołanie A(false):");
         new A(false);
-        System.out.println();
-
+        System.out.println("\n----- wywołanie B(false):");
         new B(false);
-        System.out.println();
-
+        System.out.println("\n----- wywołanie C(false):");
         new C(false);
-        System.out.println();
-
     }
-
-
 }
 
 class A {
@@ -55,7 +43,6 @@ class A {
             System.out.println("Działa konstruktor A(" + silentMode + ")");
         }
     }
-
 }
 
 class B extends A {
@@ -69,12 +56,11 @@ class B extends A {
             System.out.println("Działa konstruktor B(" + silentMode + ")");
         }
     }
-
 }
 
 class C extends B {
     public C() {
-        System.out.println("Działa konstruktor C");
+        System.out.println("Działa konstruktor C()");
     }
 
     public C(boolean silentMode) {
@@ -83,5 +69,4 @@ class C extends B {
             System.out.println("Działa konstruktor C(" + silentMode + ")");
         }
     }
-
 }
