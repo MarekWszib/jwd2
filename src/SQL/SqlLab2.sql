@@ -1,9 +1,14 @@
+---------------------------------------------------------------------------------
 --dropping-----------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
 use pedrys
 GO
 
--- TODO drop views
+DROP VIEW IF EXISTS Forum.vClues
+DROP VIEW IF EXISTS Forum.vTopics
+DROP VIEW IF EXISTS Forum.vTopicsExtended
+DROP VIEW IF EXISTS Forum.vUsersConfirmedRegistrations
 
 ALTER TABLE Forum.Topics DROP CONSTRAINT FK_Topics_Topics_ID
 ALTER TABLE Forum.Topics DROP CONSTRAINT FK_Topics_Clues_ID
@@ -23,8 +28,9 @@ DROP SCHEMA Forum
 GO
 
 
-
+---------------------------------------------------------------------------------
 --creating-----------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
 use pedrys
 GO
