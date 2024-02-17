@@ -1,0 +1,6 @@
+Rozbuduj szkielet programu z punktu 1 o zasilenie odtwarzaczy zbiorami piosenek, w tym celu:
+zaprojektuj hermetyczną klasę Song przechowującą takie informacje jak nazwa artysty, tytuł utworu, nazwa albumu,
+każdy odtwarzacz powinien przechowywać swój zbiór utworów,
+zbiory piosenek powinny być ładowane podczas tworzenia odtwarzaczy,
+użycie akcji odwtarzaj powinno wyświetlać informację o odtwarzanym utworze,
+akcje następny, poprzedni powinny odpowiednio zmieniać utwory.
