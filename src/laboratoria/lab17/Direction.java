@@ -5,33 +5,36 @@ package laboratoria.lab17;
 // Zademonstruj na przykładzie działanie nowego typu.
 
 public enum Direction {
-    N("north", "północ"),
-    NE("north east", "północny wschód"),
-    E("west", "wschód"),
-    SE("south east", " południowy wschód"),
-    S("south", "południe"),
-    SW("southe west", "południowy zachów"),
-    W("west", "zachód"),
-    NW("north west", "północny zachód");
+    N("North", "północ"),
+    NE("North East", "północny wschód"),
+    E("West", "wschód"),
+    SE("South East", " południowy wschód"),
+    S("South", "południe"),
+    SW("South West", "południowy zachód"),
+    W("West", "zachód"),
+    NW("North West", "północny zachód");
 
-    private String engName;
-    private String polName;
+    private String nameEng;
+    private String namePol;
 
-    Direction(String engName, String polName) {
-        this.engName = engName;
-        this.polName = polName;
+    Direction(String nameEng, String namePol) {
+        this.nameEng = nameEng;
+        this.namePol = namePol;
     }
 
-    public String getEngName() {
-        return engName;
+    public String getNameEng() {
+        return nameEng;
     }
 
-    public String getPolName() {
-        return polName;
+    public String getNamePol() {
+        return namePol;
     }
 
-    public static void main(String[] args) {
-        System.out.println(Direction.NE.getEngName());
-        System.out.println(Direction.W.getPolName());
+    @Override
+    public String toString() {
+        return "Direction{" +
+                "nameEng='" + nameEng + '\'' +
+                ", namePol='" + namePol + '\'' +
+                '}';
     }
 }

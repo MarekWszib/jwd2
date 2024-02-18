@@ -1,6 +1,18 @@
 package laboratoria.lab17;
 
 public enum Computation {
+    ADD {
+        @Override
+        public double perform(double a, double b) {
+            return a + b;
+        }
+    },
+    SUBTRACT {
+        @Override
+        public double perform(double a, double b) {
+            return a - b;
+        }
+    },
     MULTIPLY {
         @Override
         public double perform(double a, double b) {
@@ -15,26 +27,7 @@ public enum Computation {
 //            }
             return a / b;
         }
-    },
-    ADD {
-        @Override
-        public double perform(double a, double b) {
-            return a + b;
-        }
-    },
-    SUBTRACT {
-        @Override
-        public double perform(double a, double b) {
-            return a - b;
-        }
     };
 
-    public abstract double perform(double a, double b);
-
-
-    public static void main(String[] args) {
-        System.out.println(Computation.ADD.perform(1, -5));
-        System.out.println(Computation.DIVIDE.perform(1, -5));
-        System.out.println(Computation.DIVIDE.perform(1, 0));
-    }
+    abstract public double perform(double a, double b);
 }
