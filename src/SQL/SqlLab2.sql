@@ -12,7 +12,7 @@ DROP VIEW IF EXISTS Forum.vUsersConfirmedRegistrations
 
 ALTER TABLE Forum.Topics DROP CONSTRAINT FK_Topics_Topics_ID
 ALTER TABLE Forum.Topics DROP CONSTRAINT FK_Topics_Clues_ID
-ALTER TABLE Forum.Topics DROP CONSTRAINT FK_Topics_Users_ID
+ALTER TABLE Forum.Topics DROP CONSTRAINT
 ALTER TABLE Forum.UserStats DROP CONSTRAINT FK_UserStats_Users_ID
 ALTER TABLE Forum.UserStats DROP CONSTRAINT FK_UserStats_Topics_ID
 ALTER TABLE Forum.UsersLogins DROP CONSTRAINT FK_UsersLogins_Users_ID
