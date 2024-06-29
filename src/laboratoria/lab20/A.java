@@ -1,52 +1,47 @@
 package laboratoria.lab20;
 
+//Napisz potrójnie zagnieżdżoną klasę:
+//każda z klas powinna posiadać atrybut typu int,
+//utwórz instancję każdej z klas,
+//wyświetl wartość atrybutu każdej instancji.
+
 public class A {
-    int fieldA;
-
-    public A(int fieldA) {
-        this.fieldA = fieldA;
+    int att;
+    public A(int att) {
+        this.att = att;
     }
-
-    public int getFieldA() {
-        return fieldA;
+    public int getAtt() {
+        return att;
     }
 
     public class B {
-        int fieldB;
-
-        public B(int fieldB) {
-            this.fieldB = fieldB;
+        int att;
+        public B(int att) {
+            this.att = att;
         }
-
-        public int getFieldB() {
-            return fieldB;
+        public int getAtt() {
+            return att;
         }
 
         public class C {
-            int fieldC;
-
-            public C(int fieldC) {
-                this.fieldC = fieldC;
+            int att;
+            public C(int att) {
+                this.att = att;
             }
-
-            public int getFieldC() {
-                return fieldC;
+            public int getAtt() {
+                return att;
             }
 
             public class D {
-                public D(int fieldD) {
-                    this.fieldD = fieldD;
+                int att;
+                public D(int att) {
+                    this.att = att;
                 }
-
-                int fieldD;
-
-                public int getFieldD() {
-                    return fieldD;
+                public int getAtt() {
+                    return att;
                 }
             }
-
         }
-
     }
 
     public static void main(String[] args) {
@@ -55,10 +50,9 @@ public class A {
         B.C c = b.new C(3);
         B.C.D d = c.new D(4);
 
-        System.out.println(a.getClass() + ": field = " + a.getFieldA());
-        System.out.println(b.getClass() + ": field = " + b.getFieldB());
-        System.out.println(c.getClass() + ": field = " + c.getFieldC());
-        System.out.println(d.getClass() + ": field = " + d.getFieldD());
+        System.out.println(a.getClass() + ": att = " + a.getAtt());
+        System.out.println(b.getClass() + ": att = " + b.getAtt());
+        System.out.println(c.getClass() + ": att = " + c.getAtt());
+        System.out.println(d.getClass() + ": att = " + d.getAtt());
     }
-
 }

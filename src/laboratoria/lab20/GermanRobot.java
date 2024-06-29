@@ -1,5 +1,7 @@
 package laboratoria.lab20;
 
+//Rozszerz przykład z robotami (klasy anonimowe) o robota witającego się w innym języku np. niemieckim.
+
 public class GermanRobot {
 
     public interface GreetingModule {
