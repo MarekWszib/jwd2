@@ -17,9 +17,10 @@ public class TransactionOperations {
     public static void main(String[] args) {
         List<Transaction> transactions = provideTransactions();
 
-        Map<String, Double> valuesByCategories = transactions.stream()
-                .collect(groupingBy(Transaction::getCategory))
-                .entrySet().stream()
+        Map<String, List<Transaction>> transactionListsByCategories = transactions.stream()
+                .collect(groupingBy(Transaction::getCategory));
+
+        Map<String, Double> totalValuesByCategories = transactionListsByCategories.entrySet().stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         e -> e.getValue().stream()
@@ -27,9 +28,12 @@ public class TransactionOperations {
                                 .reduce(0d, Double::sum)
                 ));
 
-//todo
+//        totalValuesByCategories.entrySet().stream()
+//                .sorted((es1,es2)-> (int) (es1.getValue()- es2.getValue()))
 
-        System.out.println(valuesByCategories);
+
+
+//        System.out.println(valuesByCategories);
     }
 
     private static List<Transaction> provideTransactions() {
