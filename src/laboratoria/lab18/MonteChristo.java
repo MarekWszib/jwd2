@@ -14,17 +14,17 @@ import java.util.List;
 
 public class MonteChristo {
     public static void main(String[] args) {
-        List<String> lines = loadLines("src/crsto10.txt");
+        List<String> allLines = loadAllLines("src/crsto10.txt");
 //        System.out.println(lines);
 
-        if (lines != null && !lines.isEmpty()) {
-            System.out.println("Number of lines: " + countLines(lines));
-            printEveryHundredthLine(lines);
-            printTheLongestLine(lines);
+        if (allLines != null && !allLines.isEmpty()) {
+            System.out.println("Number of lines: " + countLines(allLines));
+            printEveryHundredthLine(allLines);
+            printTheLongestLine(allLines);
         }
     }
 
-    private static List<String> loadLines(String textFileName) {
+    private static List<String> loadAllLines(String textFileName) {
         List<String> allLines = new ArrayList<>();
         try {
             allLines = Files.readAllLines(Paths.get(textFileName));
