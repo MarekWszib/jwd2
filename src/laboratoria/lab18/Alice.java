@@ -3,10 +3,7 @@ package laboratoria.lab18;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 //   Mając do dyspozycji plik tekstowy z angielską wersją książki
 //   “Przygody Alicji w Krainie Czarów” alice30.txt wyznacz:
@@ -22,9 +19,38 @@ public class Alice {
 
         if (allLines != null) {
             Set<String> words = divideIntoWordsAndClean(allLines);
-            System.out.println(words);
+//            System.out.println(words);
+            System.out.println("Liczba różnych wyrazów w książce: " + words.size() + ".");
+            System.out.println();
+
+            Map<Character, Integer> firstLetterStats = createFirstLetterStats(words);
+//            System.out.println(firstLetterStats);
+            Map.Entry<Character, Integer> entry = findFirstLetterCommonWord(firstLetterStats);
+            System.out.println("Litera na jaką zaczyna się najwięcej różnych wyrazów to: " + entry.getKey() + ", jest ich " + entry.getValue() + ".");
+
         }
 
+    }
+
+    private static Map.Entry<Character, Integer> findFirstLetterCommonWord(Map<Character, Integer> firstLetterStats) {
+        Map.Entry<Character, Integer> mostCommonFirstLetterEntry = null;
+        for (Map.Entry<Character, Integer> entry : firstLetterStats.entrySet()) {
+            if (mostCommonFirstLetterEntry == null || entry.getValue() > mostCommonFirstLetterEntry.getValue()) {
+                mostCommonFirstLetterEntry = entry;
+            }
+        }
+        return mostCommonFirstLetterEntry;
+    }
+
+    private static Map<Character, Integer> createFirstLetterStats(Set<String> words) {
+        Map<Character, Integer> firstLetterStats = new TreeMap<>();
+
+        for (String word : words) {
+            char firstLetter = word.charAt(0);
+            firstLetterStats.put(firstLetter, firstLetterStats.getOrDefault(firstLetter, 0) + 1);
+        }
+
+        return firstLetterStats;
     }
 
     private static Set<String> divideIntoWordsAndClean(List<String> allLines) {
@@ -54,7 +80,7 @@ public class Alice {
     }
 
     private static String cleanWord(String word) {
-        return word.replaceAll("\\p{Punct}|\\d","");
+        return word.replaceAll("\\p{Punct}|\\d", "");
     }
 
 }
